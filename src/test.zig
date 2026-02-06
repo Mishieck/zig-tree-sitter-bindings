@@ -171,6 +171,10 @@ test "TreeCursor" {
     try testing.expectEqual(0, cursor.gotoFirstChildForByte(1));
     try testing.expectEqual(1, cursor.gotoFirstChildForPoint(.{ .row = 0, .column = 5 }));
     try testing.expectEqualStrings("declarator", cursor.fieldName().?);
+
+    cursor.reset(root_node);
+    const named_children = try root_node.namedChildren(&cursor, testing.allocator);
+    try testing.expectEqual(1, named_children.len);
 }
 
 test "Node" {

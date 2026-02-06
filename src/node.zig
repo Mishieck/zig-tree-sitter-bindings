@@ -241,7 +241,7 @@ pub const Node = extern struct {
         }
 
         while (true) {
-            var node = cursor.currentNode();
+            var node = cursor.node();
             if (node.isNamed()) {
                 result.appendAssumeCapacity(node);
             }
