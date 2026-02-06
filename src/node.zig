@@ -276,7 +276,7 @@ pub const Node = extern struct {
         }
 
         while (true) {
-            if (cursor.currentFieldId() == field_id) {
+            if (cursor.fieldId() == field_id) {
                 try result.append(allocator, cursor.node());
             }
             if (!cursor.gotoNextSibling()) {
