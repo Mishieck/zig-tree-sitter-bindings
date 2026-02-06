@@ -218,9 +218,9 @@ pub const Node = extern struct {
             return try result.toOwnedSlice(allocator);
         }
 
-        try result.append(allocator, cursor.currentNode());
+        try result.append(allocator, cursor.node());
         while (cursor.gotoNextSibling()) {
-            result.appendAssumeCapacity(cursor.currentNode());
+            result.appendAssumeCapacity(cursor.node());
         }
 
         return result.toOwnedSlice();
@@ -277,7 +277,7 @@ pub const Node = extern struct {
 
         while (true) {
             if (cursor.currentFieldId() == field_id) {
-                try result.append(allocator, cursor.currentNode());
+                try result.append(allocator, cursor.node());
             }
             if (!cursor.gotoNextSibling()) {
                 break;
